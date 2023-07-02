@@ -1,0 +1,471 @@
+name: Aeotec-HEM1
+components:
+- id: main
+  capabilities:
+  - id: energyMeter
+    version: 1
+  - id: powerMeter
+    version: 1
+  - id: refresh
+    version: 1
+  - id: battery
+    version: 1
+  categories:
+  - name: CurbPowerMeter
+- id: Clamp1
+  capabilities:
+  - id: energyMeter
+    version: 1
+  - id: powerMeter
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: CurbPowerMeter
+- id: Clamp2
+  capabilities:
+  - id: energyMeter
+    version: 1
+  - id: powerMeter
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: CurbPowerMeter
+preferences:
+  - name: "refreshOnTimeOrQuantum"
+    title: "Selective reporting (Watts vs Secs)"
+    description: "0 = update based on refresh interval (in seconds). 1 = update whenever wattage changes beyond specified level. Note - you need to set thresholds below..."
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 1
+      default: 0
+  - name: "percentageChangeWholeHEM"
+    title: "Whole HEM - Percentage change"
+    description: "Percentage change in wattage, FOR WHOLE HEM, to trigger an update (default is 10%)"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 100
+      default: 10
+  - name: "wattageChangeWholeHEM"
+    title: "Whole HEM - Wattage change"
+    description: "Change in wattage, FOR WHOLE HEM,  to trigger an update (default is 50W)"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 60000
+      default: 50
+  - name: "g1RefreshInterval"
+    title: "Group 1 - Refresh Interval (sec)"
+    description: "Interval (default is 300 seconds) between data refresh - warning too frequently may impact hub performance"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 5
+      maximum: 2147483647
+      default: 300
+  - name: "c1PercentageChange"
+    title: "Clamp 1 - Percentage change"
+    description: "Percentage change in wattage to trigger an update (default is 10%)"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 100
+      default: 10
+  - name: "c1WattageChange"
+    title: "Clamp 1 - Wattage change"
+    description: "Change in wattage to trigger an update (default is 50W)"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 60000
+      default: 50
+  - name: "g2RefreshInterval"
+    title: "Group 2 - Refresh Interval (sec)"
+    description: "Interval (default is 300 seconds) between data refresh - warning too frequently may impact hub performance"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 5
+      maximum: 2147483647
+      default: 300
+  - name: "c2PercentageChange"
+    title: "Clamp 2 - Percentage change"
+    description: "Percentage change in wattage to trigger an update (default is 10%)"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 100
+      default: 10
+  - name: "c2WattageChange"
+    title: "Clamp 2 - Wattage change"
+    description: "Change in wattage to trigger an update (default is 50W)"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 60000
+      default: 50
+  - name: "g3RefreshInterval"
+    title: "Group 3 - Refresh Interval (sec)"
+    description: "Interval (default is 300 seconds) between data refresh - warning too frequently may impact hub performance"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 5
+      maximum: 2147483647
+      default: 300
+  - name: "c3PercentageChange"
+    title: "Clamp 3 - Percentage change"
+    description: "Percentage change in wattage to trigger an update (default is 10%)"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 100
+      default: 10
+  - name: "c3WattageChange"
+    title: "Clamp 3 - Wattage change"
+    description: "Change in wattage to trigger an update (default is 50W)"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 60000
+      default: 50
+  - name: "g1batt"
+    title: "Group 1 - Report battery status"
+    description: "Group 1 - Report battery status"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        1: "Report battery status"
+      default: 0
+  - name: "g1hemmls"
+    title: "Group 1 - Report Watts (multilevel)"
+    description: "Group 1 - Report Watts of whole HEM (multilevel sensor)"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        2: "Report Watts of whole HEM"
+      default: 0
+  - name: "g1hemw"
+    title: "Group 1 - Report Watts of whole HEM"
+    description: "Group 1 - Report Watts of whole HEM"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        4: "Report Watts of whole HEM"
+      default: 0
+  - name: "g1hemkWh"
+    title: "Group 1 - Report kWh of whole HEM"
+    description: "Group 1 - Report kWh of whole HEM"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        8: "Report kWh of whole HEM"
+      default: 0
+  - name: "g1clamp1W"
+    title: "Group 1 - Report Watts of Clamp 1"
+    description: "Group 1 - Report Watts of Clamp 1"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        256: "Report Watts of Clamp 1"
+      default: 0
+  - name: "g1clamp2W"
+    title: "Group 1 - Report Watts of Clamp 2"
+    description: "Group 1 - Report Watts of Clamp 2"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        512: "Report Watts of Clamp 2"
+      default: 0
+  - name: "g1clamp3W"
+    title: "Group 1 - Report Watts of Clamp 3"
+    description: "Group 1 - Report Watts of Clamp 3"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        1024: "Report Watts of Clamp 3"
+      default: 0
+  - name: "g1clamp1kWh"
+    title: "Group 1 - Report kWh of Clamp 1"
+    description: "Group 1 - Report kWh of Clamp 1"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        2048: "Report kWh of Clamp 1"
+      default: 0
+  - name: "g1clamp2kWh"
+    title: "Group 1 - Report kWh of Clamp 2"
+    description: "Group 1 - Report kWh of Clamp 2"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        4096: "Report kWh of Clamp 2"
+      default: 0
+  - name: "g1clamp3kWh"
+    title: "Group 1 - Report kWh of Clamp 3"
+    description: "Group 1 - Report kWh of Clamp 3"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        8192: "Report kWh of Clamp 3"
+      default: 0
+  - name: "g2batt"
+    title: "Group 2 - Report battery status"
+    description: "Group 2 - Report battery status"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        1: "Report battery status"
+      default: 0
+  - name: "g2hemmls"
+    title: "Group 2 - Report Watts (multilevel)"
+    description: "Group 2 - Report Watts of whole HEM (multilevel sensor)"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        2: "Report Watts of whole HEM"
+      default: 0
+  - name: "g2hemw"
+    title: "Group 2 - Report Watts of whole HEM"
+    description: "Group 2 - Report Watts of whole HEM"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        4: "Report Watts of whole HEM"
+      default: 0
+  - name: "g2hemkWh"
+    title: "Group 2 - Report kWh of whole HEM"
+    description: "Group 2 - Report kWh of whole HEM"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        8: "Report kWh of whole HEM"
+      default: 0
+  - name: "g2clamp1W"
+    title: "Group 2 - Report Watts of Clamp 1"
+    description: "Group 2 - Report Watts of Clamp 1"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        256: "Report Watts of Clamp 1"
+      default: 0
+  - name: "g2clamp2W"
+    title: "Group 2 - Report Watts of Clamp 2"
+    description: "Group 2 - Report Watts of Clamp 2"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        512: "Report Watts of Clamp 2"
+      default: 0
+  - name: "g2clamp3W"
+    title: "Group 2 - Report Watts of Clamp 3"
+    description: "Group 2 - Report Watts of Clamp 3"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        1024: "Report Watts of Clamp 3"
+      default: 0
+  - name: "g2clamp1kWh"
+    title: "Group 2 - Report kWh of Clamp 1"
+    description: "Group 2 - Report kWh of Clamp 1"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        2048: "Report kWh of Clamp 1"
+      default: 0
+  - name: "g2clamp2kWh"
+    title: "Group 2 - Report kWh of Clamp 2"
+    description: "Group 2 - Report kWh of Clamp 2"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        4096: "Report kWh of Clamp 2"
+      default: 0
+  - name: "g2clamp3kWh"
+    title: "Group 2 - Report kWh of Clamp 3"
+    description: "Group 2 - Report kWh of Clamp 3"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        8192: "Report kWh of Clamp 3"
+      default: 0
+  - name: "g3batt"
+    title: "Group 3 - Report battery status"
+    description: "Group 3 - Report battery status"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        1: "Report battery status"
+      default: 0
+  - name: "g3hemmls"
+    title: "Group 3 - Report Watts (multilevel)"
+    description: "Group 3 - Report Watts of whole HEM (multilevel sensor)"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        2: "Report Watts of whole HEM"
+      default: 0
+  - name: "g3hemw"
+    title: "Group 3 - Report Watts of whole HEM"
+    description: "Group 3 - Report Watts of whole HEM"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        4: "Report Watts of whole HEM"
+      default: 0
+  - name: "g3hemkWh"
+    title: "Group 3 - Report kWh of whole HEM"
+    description: "Group 3 - Report kWh of whole HEM"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        8: "Report kWh of whole HEM"
+      default: 0
+  - name: "g3clamp1W"
+    title: "Group 3 - Report Watts of Clamp 1"
+    description: "Group 3 - Report Watts of Clamp 1"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        256: "Report Watts of Clamp 1"
+      default: 0
+  - name: "g3clamp2W"
+    title: "Group 3 - Report Watts of Clamp 2"
+    description: "Group 3 - Report Watts of Clamp 2"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        512: "Report Watts of Clamp 2"
+      default: 0
+  - name: "g3clamp3W"
+    title: "Group 3 - Report Watts of Clamp 3"
+    description: "Group 3 - Report Watts of Clamp 3"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        1024: "Report Watts of Clamp 3"
+      default: 0
+  - name: "g3clamp1kWh"
+    title: "Group 3 - Report kWh of Clamp 1"
+    description: "Group 3 - Report kWh of Clamp 1"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        2048: "Report kWh of Clamp 1"
+      default: 0
+  - name: "g3clamp2kWh"
+    title: "Group 3 - Report kWh of Clamp 2"
+    description: "Group 3 - Report kWh of Clamp 2"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        4096: "Report kWh of Clamp 2"
+      default: 0
+  - name: "g3clamp3kWh"
+    title: "Group 3 - Report kWh of Clamp 3"
+    description: "Group 3 - Report kWh of Clamp 3"
+    required: false
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Not included"
+        8192: "Report kWh of Clamp 3"
+      default: 0
+  - name: "valueg1"
+    title: "Do not use1"
+    description: "Do not use1"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 1000000
+      default: 13
+  - name: "valueg2"
+    title: "Do not use2"
+    description: "Do not use2"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 1000000
+      default: 2304
+  - name: "valueg3"
+    title: "Do not use3"
+    description: "Do not use3"
+    required: false
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 1000000
+      default: 4608
+

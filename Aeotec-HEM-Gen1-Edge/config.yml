@@ -1,0 +1,4 @@
+name: 'Aeotec-HEM1 delphimon'
+packageKey: 'Aeotec-HEM1-delphimon'
+permissions:
+  zwave: {}

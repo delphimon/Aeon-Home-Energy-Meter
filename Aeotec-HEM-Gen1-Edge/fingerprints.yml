@@ -1,0 +1,7 @@
+zwaveManufacturer:
+  - id: "AeonEnergyMonitorGen1/US"
+    deviceLabel: Aeotec Energy Monitor Gen 1
+    manufacturerId: 0x0086
+    productType: 0x0002
+    productId: 0x0009
+    deviceProfileName: Aeotec-HEM1
